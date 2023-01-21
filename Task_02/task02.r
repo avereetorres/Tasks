@@ -28,7 +28,4 @@ Data1$age <- dateID - dateID[which(Data1$event == 'birth')]
 head(Data1)
 beren2 <- Data1
 beren3 <- beren2[order(beren2$age),]
-head(beren)
-head(beren2)
-head(beren3)
 write.csv(beren3, 'beren_new.csv', quote=F, row.names=FALSE)
