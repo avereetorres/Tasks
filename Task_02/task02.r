@@ -189,8 +189,6 @@ totalGrowth <- tapply(cyrusMass$value[Mass], cyrusMass$age[Mass], sum)
 numGrowth <- tapply(cyrusMass$value[Mass], cyrusMass$age[Mass], length)
 cor(cyrusMass$value[Mass], cyrusMass$age[Mass])
 cor.test(cyrusMass$value[Mass], cyrusMass$age[Mass])
-cyrusMass
-
 cyrusreg <- lm(cyrusMass$value[Mass] ~ cyrusMass$age[Mass])
 summary(cyrusreg)
 attributes(cyrusreg)
@@ -202,9 +200,6 @@ cyrusMass
 (498+171)/2
 11170+334.5+334.5+334.5
 12173.5/1000
-avgMass
-mean(cyrusMass$value[Mass])
 (4710+4450+4422+5103+6095+8730+10003+10999+11170)/9
-
 #I predict Cyrus will weigh 12.17kg +/- 0.574kg
 
