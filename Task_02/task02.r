@@ -58,7 +58,6 @@ dev.off()
 
 
 
-
 #Part B
 source("http://jonsmitchell.com/code/plotFxn02b.R")
 # summarize the day count
@@ -156,16 +155,22 @@ summary(cyrusCor)
 cyrusANOVA <- aov(cyrus3$value[Mass]~cyrus3$caregiver[Mass])
 boxplot(cyrus3$value[Mass]~cyrus3$age[Mass], xlab="Age (days)", ylab="Mass (kg)")
 par(las=1,mar=c(5,5,1,1), mgp=c(2,0.5,0), tck=-0.01)
-plot(as.numeric(names(totalMass)), totalMass, type="b", pch=16, xlab="Age(days)", ylab="Mass(kg)")
+plot(as.numeric(names(totalMass)), totalMass, type="b", pch=16, xlab="Age(days)", ylab="Mass(kg)", col="blue")
 abline(h=mean(totalMass), lty=2, col='red')
 head(cyrus2)
 head(cyrusMass)
 ?points
-plot(berenMass$value[Mass]~berenMass$age[Mass],xlab="Age (days)", ylab="Mass (kg)")
+
+Mass<-which(cyrus3$event=="trait_mass")
+avgMass <- mean(cyrus3$value[Mass])
+
 par(las=1, mar=c(5,5,1,1), mgp=c(2,0.5,0), tck=-0.01)
-plot(as.numeric(names(totalMass)), totalMass, type="b", col="blue", pch=16,xlab="Age (days)", ylab="Mass (kg)")
-points(cyrusMass$value[Mass]/1000~cyrusMass$age[Mass], col="green", pch=16, xlab="Age in days", ylab="Mass in kg")
+plot(as.numeric(names(totalMass)), totalMass, type ="b", pch=16, xlab="Age (days)", ylab="Mass(kg)", col="blue")
+points(cyrus3$age[Mass], cyrus3$value[Mass]/1000, col="green", pch=16, xlab="Age (days)", ylab="Mass (kg)")
+
 title(("Cyrus and Beren Age vs Mass"), xlab = "Age (days)", ylab = "Mass (kg)")
+legend(1000,6,legend=c("Beren", "cyrus"), col=c("blue", "green"), lty=2, cex=0.8,title="children",text.font=4)
+)
 ?plot
 abline(h=mean(totalMass), lty=2, col="red")
 cyrusMass
@@ -202,4 +207,5 @@ cyrusMass
 12173.5/1000
 (4710+4450+4422+5103+6095+8730+10003+10999+11170)/9
 #I predict Cyrus will weigh 12.17kg +/- 0.574kg
+
 
