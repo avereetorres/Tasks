@@ -208,4 +208,8 @@ cyrusMass
 (4710+4450+4422+5103+6095+8730+10003+10999+11170)/9
 #I predict Cyrus will weigh 12.17kg +/- 0.574kg
 
+berenMass
+
+cyrusMass
+
 
