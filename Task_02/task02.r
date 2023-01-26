@@ -126,7 +126,7 @@ boxplot(beren3$value[Mass]~beren3$age[Mass], xlab="Age (days)", ylab="Mass (kg)"
 par(las=1,mar=c(5,5,1,1), mgp=c(2,0.5,0), tck=-0.01)
 plot(as.numeric(names(totalMass)), totalMass, type="b", pch=16, xlab="Age(days)", ylab="Mass(kg)")
 abline(h=mean(totalMass), lty=2, col='red')
-setwd('')
+
 head(Data2)
 Mass<-which(Data2[,9] == 'trait_mass')
 cyrusMass <- Data2[Mass,]
@@ -139,7 +139,7 @@ Data2$age <- dateID - dateID[which(Data2$event == 'birth')]
 head(Data2)
 cyrus2<-Data2
 cyrus3<-cyrus2[order(cyrus2$age),]
-cyrus3
+cyrusMass <- cyrus3
 write.csv(cyrus2, 'cyrus_new.csv', quote=F, row.names=FALSE)
 Mass<-which(cyrus3$event == "trait_mass")
 avgMass <- mean(cyrus3$value[Mass])
@@ -170,7 +170,7 @@ points(cyrus3$age[Mass], cyrus3$value[Mass]/1000, col="green", pch=16, xlab="Age
 
 title(("Cyrus and Beren Age vs Mass"), xlab = "Age (days)", ylab = "Mass (kg)")
 legend(1000,6,legend=c("Beren", "cyrus"), col=c("blue", "green"), lty=2, cex=0.8,title="children",text.font=4)
-)
+
 ?plot
 abline(h=mean(totalMass), lty=2, col="red")
 cyrusMass
@@ -197,7 +197,7 @@ cor.test(cyrusMass$value[Mass], cyrusMass$age[Mass])
 cyrusreg <- lm(cyrusMass$value[Mass] ~ cyrusMass$age[Mass])
 summary(cyrusreg)
 attributes(cyrusreg)
-plot(cyrusMass$value[Mass]/1000~cyrusMass$age[Mass], col="green", pch=16, xlab="Age in days", ylab="Mass in kg")
+plot(cyrusMass$value[Mass]/1000~cyrusMass$age[Mass], col="purple", pch=16, xlab="Age (days)", ylab="Mass (kg)")
 cyrusMass
 (10999-10003)
 996/2
@@ -206,10 +206,12 @@ cyrusMass
 11170+334.5+334.5+334.5
 12173.5/1000
 (4710+4450+4422+5103+6095+8730+10003+10999+11170)/9
-#I predict Cyrus will weigh 12.17kg +/- 0.574kg
 
 berenMass
 
 cyrusMass
-
-
+abline(a=4.857187, b=36.950, h=50, v= 1)
+abline(lm(cyrusMass$value[Mass]/1000 ~ cyrusMass$age[Mass]))
+title("Cyrus Age vs Mass"), xlab = "Age (days)", ylab = "Mass (kg)")
+title("Cyrus Age vs Mass")
+#I predict Cyrus will weigh 12.17kg +/- 0.574kg
