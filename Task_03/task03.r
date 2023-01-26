@@ -89,6 +89,7 @@ quantile(ManySiblings)
 mean(ManySiblings)
 
 hist(ManySiblings, col="blue", border="white")
+?hist
 
 #The distribution of values in this analysis are explainable because while each 
 #child has 50% of moms genetics and 50% of dads genetics, it is completely random
