@@ -64,5 +64,4 @@ mtext(side=2, at=8, line=0, "sel. sim.")
 Simulation7<-c(Simulation2, Simulation3, Simulation4, Simulation5, Simulation6)
 addHist(Y=8, Dat=Simulation7, Color=rgb(0,0,1,0.25))
 
-?simDraws
-??simDraws
+
