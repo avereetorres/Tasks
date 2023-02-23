@@ -16,6 +16,7 @@ library(ggplot2)
 library(RColorBrewer)
 library(scales)
 
+dev.off()
 lobster <- read.csv("http://jonsmitchell.com/data/lobster_genotypes.csv")
 lobster_wide <- reshape(lobster, idvar = c("ID", "Site"), timevar = "Locus", direction = "wide", sep = "")
 colnames(lobster_wide) <- gsub("Genotype", "", colnames(lobster_wide))
@@ -56,12 +57,17 @@ Ho_lobster <- round(apply(basic_lobster$Ho, MARGIN = 2, FUN = mean, na.rm = TRUE
 
 He_lobster <- round(apply(basic_lobster$Hs, MARGIN = 2, FUN = mean, na.rm = TRUE), digits = 3)
 
+pdf("005_plot01.pdf")
+
 par(mar=c(4,4,1,1), las=1, mgp=c(2, 0.25, 0), tck=-0.005, cex.lab=1.25)
 plot(He_lobster, Ho_lobster, xlab="expected H", ylab="observed H", pch=21, bg="gray", xlim=c(0.32, 0.405), ylim=c(0.32, 0.405))
 
 abline(0,1,lty=3)
 
 abline(lm(Ho_lobster~He_lobster), lty=2, lwd=1.25, col='red')
+
+
+dev.off()
 
 lobster_gen_sub <- popsub(lobster_gen, sublist=c("Ale", "Ber", "Brd", "Pad", "Sar17", "Vig"))
 
@@ -85,6 +91,7 @@ fst.label <- expression(italic("F")[ST])
 
 mid <- max(fst.df$Fst)/2
 
+pdf("005_plot02.pdf")
 ggplot(data=fst.df, aes(x = Site1, y=Site2, fill=Fst))+
   geom_tile (colour = "black") +
   scale_fill_gradient2(low="blue", mid="pink", high="red",
@@ -99,10 +106,20 @@ ggplot(data=fst.df, aes(x = Site1, y=Site2, fill=Fst))+
         legend.position="right", 
         legend.title=element_text(size = 14, face = "bold"), 
         legend.text=element_text(size=10))
-  coalescent.plot()
-library(learnPopGen)  
-coalescent.plot()  
-coalescent.plot()
-coalescent.plot()
+dev.off()
 
+
+library(learnPopGen)  
+
+pdf("005_plot03.pdf") 
+coalescent.plot()  
+dev.off()
+
+pdf("005_plot04.pdf") 
+coalescent.plot()  
+dev.off()
+
+pdf("005_plot05.pdf") 
+coalescent.plot()  
+dev.off()
 
