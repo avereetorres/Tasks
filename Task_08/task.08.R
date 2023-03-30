@@ -87,3 +87,8 @@ dev.off()
 
 cor.test(traitMat[,1], traitMat[,2])$p.value
 
+#BONUS
+pdf("bonus08.pdf")
+phylomorphospace(Tree, traitMat)
+dev.off()
+
